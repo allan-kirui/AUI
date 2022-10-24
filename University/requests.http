@@ -1,0 +1,87 @@
+GET http://localhost:8080/api/professors
+
+###
+
+GET http://localhost:8080/api/professors/2
+
+###
+
+GET http://localhost:8080/api/professors/3
+
+###
+
+POST http://localhost:8080/api/professors
+Content-Type: application/json
+
+{
+  "name": "Linda",
+  "education": "PG",
+  "age": 39,
+  "experience": 11,
+  "university": "UCLA",
+  "subject": "Medicine"
+}
+
+
+###
+
+PUT http://localhost:8080/api/professors/2
+Content-Type: application/json
+
+{
+  "name": "Mandlebrot",
+  "education": "Princeton",
+  "age": 30
+}
+
+###
+
+//DELETE http://localhost:8080/api/professors/1
+
+
+###
+
+GET http://localhost:8080/api/universities/NYU/professors
+
+###
+
+GET http://localhost:8080/api/universities/NYU/professors/1
+
+###
+
+GET http://localhost:8080/api/universities/UCLA/professors/3
+
+###
+
+GET http://localhost:8080/api/universities/NYU/professors/4
+
+
+###
+
+POST http://localhost:8080/api/universities/UCLA/professors
+Content-Type: application/json
+
+{
+  "name": "Silas",
+  "education": "Berlin University",
+  "age": 70,
+  "experience": 35,
+  "university": "UCLA",
+  "subject": "Physics"
+}
+
+
+###
+
+PUT http://localhost:8080/api/universities/UCLA/professors/3
+Content-Type: application/json
+
+{
+  "name": "Sandy",
+  "education": "Yale",
+  "age": 42
+}
+
+###
+
+DELETE http://localhost:8080/api/universities/UoM/professors/2
