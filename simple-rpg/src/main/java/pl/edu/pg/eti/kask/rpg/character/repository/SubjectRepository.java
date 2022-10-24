@@ -37,6 +37,7 @@ public class SubjectRepository implements Repository<Subject, String> {
         return store.findSubject(id);
     }
 
+
     @Override
     public List<Subject> findAll() {
         return store.findAllSubjects();

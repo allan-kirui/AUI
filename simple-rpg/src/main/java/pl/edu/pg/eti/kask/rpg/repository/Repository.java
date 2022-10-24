@@ -13,6 +13,7 @@ import java.util.Optional;
  */
 public interface Repository<E, K> {
 
+
     /**
      * Find entity object using its primary key.
      *

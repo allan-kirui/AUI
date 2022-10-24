@@ -15,6 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
+
 public class Subject implements Serializable {
 
     /**

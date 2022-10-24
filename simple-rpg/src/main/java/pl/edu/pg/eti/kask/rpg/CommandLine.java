@@ -37,6 +37,7 @@ public class CommandLine implements CommandLineRunner {
         System.out.println(subjectService.findAll());
     }
 
+
     @Override
     public void run(String... args) throws Exception {
         professorService.findAll().forEach(System.out::println);

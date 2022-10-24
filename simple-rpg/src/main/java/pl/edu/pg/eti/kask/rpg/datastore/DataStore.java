@@ -98,6 +98,7 @@ public class DataStore {
      *
      * @return list (can be empty) of all professors
      */
+
     public synchronized List<Professor> findAllProfessors() {
         return professors.stream().map(CloningUtility::clone).collect(Collectors.toList());
     }

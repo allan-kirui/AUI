@@ -18,6 +18,7 @@ import java.io.InputStream;
  * database with default content. When using persistence storage application instance should be initialized only during
  * first run in order to init database with starting data. Good place to create first default admin university.
  */
+
 @Component
 public class InitializedData {
 

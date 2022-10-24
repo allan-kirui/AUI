@@ -16,6 +16,7 @@ import java.util.Optional;
 @org.springframework.stereotype.Repository
 public class ProfessorRepository implements Repository<Professor, Long> {
 
+
     /**
      * Underlying data store. In future should be replaced with database connection.
      */

@@ -10,6 +10,7 @@ import java.security.MessageDigest;
  */
 public class Sha256Utility {
 
+
     /**
      * Hashes provided text using SHA-256 algorithm.
      *

@@ -84,6 +84,7 @@ public class ProfessorService {
         repository.delete(repository.find((long) employeeID).orElseThrow());
     }
 
+
     /**
      * Updates portrait of the employee.
      *

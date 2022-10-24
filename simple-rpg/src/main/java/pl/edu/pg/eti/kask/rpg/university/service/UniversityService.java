@@ -44,6 +44,7 @@ public class UniversityService {
      * @param password university's password (hash)
      * @return container (can be empty) with university
      */
+
     public Optional<University> find(String login, String password) {
         return repository.findByLoginAndPassword(login, Sha256Utility.hash(password));
     }

@@ -17,6 +17,7 @@ public class SimpleRpgApplication {
     public static void main(String[] args) {
         SpringApplication.run(SimpleRpgApplication.class, args);
 
+
     }
 
 }

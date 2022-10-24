@@ -20,6 +20,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class Skill implements Serializable {
 
+
     /**
      * Name of the skill.
      */

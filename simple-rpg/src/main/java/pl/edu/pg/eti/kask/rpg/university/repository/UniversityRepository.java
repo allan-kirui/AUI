@@ -8,6 +8,7 @@ import pl.edu.pg.eti.kask.rpg.university.entity.University;
 import java.util.List;
 import java.util.Optional;
 
+
 /**
  * Repository for University entity. Repositories should be used in business layer (e.g.: in services).
  */

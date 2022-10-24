@@ -18,6 +18,7 @@ import pl.edu.pg.eti.kask.rpg.university.entity.University;
 @EqualsAndHashCode(callSuper = true)
 public class Professor extends Creature {
 
+
     /**
      * Professor's education story.
      */

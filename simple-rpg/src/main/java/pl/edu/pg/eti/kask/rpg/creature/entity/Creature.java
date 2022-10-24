@@ -9,6 +9,7 @@ import java.io.Serializable;
  * Entity for game creature. Represents all creatures that can be found in the game as well as is base class for are
  * character classes and possible NPCs.
  */
+
 @Getter
 @Setter
 @SuperBuilder

@@ -10,6 +10,7 @@ import java.util.List;
  * Entity for system university. Represents information about particular university as well as credentials for authorization and
  * authentication needs.
  */
+
 @Getter
 @Setter
 @SuperBuilder
