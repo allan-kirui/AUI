@@ -17,7 +17,7 @@ import pl.edu.pg.eti.kask.rpg.character.dto.PostProfessorRequest;
 import pl.edu.pg.eti.kask.rpg.character.dto.PutProfessorRequest;
 import pl.edu.pg.eti.kask.rpg.character.entity.Professor;
 import pl.edu.pg.eti.kask.rpg.character.service.ProfessorService;
-import pl.edu.pg.eti.kask.rpg.character.service.SubjectService;
+import pl.edu.pg.eti.kask.rpg.university.service.UniversityService;
 
 import java.util.Collection;
 import java.util.List;
@@ -33,19 +33,15 @@ public class ProfessorController {
      */
     private ProfessorService professorService;
 
-    /**
-     * Service for managing professions.
-     */
-    private SubjectService subjectService;
+    private UniversityService universityService;
 
     /**
      * @param professorService  service for managing professors
-     * @param subjectService service for managing professions
      */
     @Autowired
-    public ProfessorController(SubjectService subjectService, ProfessorService professorService) {
+    public ProfessorController(ProfessorService professorService, UniversityService universityService) {
         this.professorService = professorService;
-        this.subjectService = subjectService;
+        this.universityService = universityService;
     }
 
     /**
@@ -79,7 +75,7 @@ public class ProfessorController {
     @PostMapping
     public ResponseEntity<Void> postProfessor(@RequestBody PostProfessorRequest request, UriComponentsBuilder builder) {
         Professor professor = PostProfessorRequest
-                .dtoToEntityMapper(name -> subjectService.find(name).orElseThrow(), () -> null)
+                .dtoToEntityMapper(name -> universityService.find(name).orElseThrow())
                 .apply(request);
         professor = professorService.create(professor);
         return ResponseEntity.created(builder.pathSegment("api", "professors", "{id}")

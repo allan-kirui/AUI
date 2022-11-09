@@ -17,7 +17,6 @@ import pl.edu.pg.eti.kask.rpg.character.dto.PostProfessorRequest;
 import pl.edu.pg.eti.kask.rpg.character.dto.PutProfessorRequest;
 import pl.edu.pg.eti.kask.rpg.character.entity.Professor;
 import pl.edu.pg.eti.kask.rpg.character.service.ProfessorService;
-import pl.edu.pg.eti.kask.rpg.character.service.SubjectService;
 import pl.edu.pg.eti.kask.rpg.university.entity.University;
 import pl.edu.pg.eti.kask.rpg.university.service.UniversityService;
 
@@ -39,24 +38,17 @@ public class UniversityProfessorController {
     private ProfessorService professorService;
 
     /**
-     * Service for managing subjects.
-     */
-    private SubjectService subjectService;
-
-    /**
      * Service for managing universitys.
      */
     private UniversityService universityService;
 
     /**
      * @param professorService  service for managing professors
-     * @param subjectService service for managing subjects
      * @param universityService       service for managing universitys
      */
     @Autowired
-    public UniversityProfessorController(ProfessorService professorService, SubjectService subjectService, UniversityService universityService) {
+    public UniversityProfessorController(ProfessorService professorService, UniversityService universityService) {
         this.professorService = professorService;
-        this.subjectService = subjectService;
         this.universityService = universityService;
     }
 
@@ -95,7 +87,7 @@ public class UniversityProfessorController {
         Optional<University> university = universityService.find(universityname);
         if (university.isPresent()) {
             Professor professor = PostProfessorRequest
-                    .dtoToEntityMapper(name -> subjectService.find(name).orElseThrow(), university::get)
+                    .dtoToEntityMapper(name -> universityService.find(name).orElseThrow())
                     .apply(request);
             professor = professorService.create(professor);
             return ResponseEntity.created(builder.pathSegment("api", "universities", "{universityname}", "professors", "{id}")

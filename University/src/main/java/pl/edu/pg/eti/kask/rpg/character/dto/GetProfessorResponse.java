@@ -1,6 +1,13 @@
 package pl.edu.pg.eti.kask.rpg.character.dto;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import pl.edu.pg.eti.kask.rpg.character.entity.Professor;
 
 import java.util.function.Function;
@@ -41,7 +48,7 @@ public class GetProfessorResponse {
     /**
      * Professor's profession (class).
      */
-    private String subject;
+    private String university;
 
     /**
      * Professor's total experience.
@@ -56,8 +63,9 @@ public class GetProfessorResponse {
                 .id(professor.getId())
                 .name(professor.getName())
                 .age(professor.getAge())
-                .subject(professor.getSubject().getName())
                 .education(professor.getEducation())
+                .experience(professor.getExperience())
+                .university(professor.getUniversity().getName())
                 .build();
     }
 

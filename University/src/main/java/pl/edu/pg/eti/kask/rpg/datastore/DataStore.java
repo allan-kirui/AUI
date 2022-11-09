@@ -3,7 +3,6 @@ package pl.edu.pg.eti.kask.rpg.datastore;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 import pl.edu.pg.eti.kask.rpg.character.entity.Professor;
-import pl.edu.pg.eti.kask.rpg.character.entity.Subject;
 import pl.edu.pg.eti.kask.rpg.serialization.CloningUtility;
 import pl.edu.pg.eti.kask.rpg.university.entity.University;
 
@@ -20,12 +19,6 @@ import java.util.stream.Stream;
 @Log
 @Component
 public class DataStore {
-
-    /**
-     * Set of all available subject.
-     */
-    private Set<Subject> subject = new HashSet<>();
-
     /**
      * Set of all characters.
      */
@@ -35,61 +28,6 @@ public class DataStore {
      * Set of all universities.
      */
     private Set<University> universities = new HashSet<>();
-
-    /**
-     * Seeks for all subject.
-     *
-     * @return list (can be empty) of all subject
-     */
-    public synchronized List<Subject> findAllSubjects() {
-        return new ArrayList<>(subject);
-    }
-
-    /**
-     * Seeks for the profession in the memory storage.
-     *
-     * @param name name of the profession
-     * @return container (can be empty) with profession if present
-     */
-    public Optional<Subject> findSubject(String name) {
-        return subject.stream()
-                .filter(profession -> profession.getName().equals(name))
-                .findFirst()
-                .map(CloningUtility::clone);
-    }
-
-    /**
-     * Stores new profession.
-     *
-     * @param profession new profession to be stored
-     * @throws IllegalArgumentException if profession with provided name already exists
-     */
-    public synchronized void createSubject(Subject profession) throws IllegalArgumentException {
-        findSubject(profession.getName()).ifPresentOrElse(
-                original -> {
-                    throw new IllegalArgumentException(
-                            String.format("The profession name \"%s\" is not unique", profession.getName()));
-                },
-                () -> {
-                   // profession.setId(findAllSubjects().stream().mapToLong(Subject::getId).max().orElse(0) + 1);
-                    subject.add(profession);
-                });
-    }
-
-    /**
-     * Deletes existing character.
-     *
-     * @param name character's id
-     * @throws IllegalArgumentException if character with provided id does not exist
-     */
-    public synchronized void deleteSubject(String name) throws IllegalArgumentException {
-        findSubject(name).ifPresentOrElse(
-                original -> subject.remove(original),
-                () -> {
-                    throw new IllegalArgumentException(
-                            String.format("The subject with name \"%s\" does not exist", name));
-                });
-    }
 
 
     /**

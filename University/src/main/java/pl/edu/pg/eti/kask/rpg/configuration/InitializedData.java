@@ -4,9 +4,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.edu.pg.eti.kask.rpg.character.entity.Professor;
-import pl.edu.pg.eti.kask.rpg.character.entity.Subject;
 import pl.edu.pg.eti.kask.rpg.character.service.ProfessorService;
-import pl.edu.pg.eti.kask.rpg.character.service.SubjectService;
 import pl.edu.pg.eti.kask.rpg.university.entity.University;
 import pl.edu.pg.eti.kask.rpg.university.service.UniversityService;
 
@@ -31,16 +29,10 @@ public class InitializedData {
      */
     private final UniversityService universityService;
 
-    /**
-     * Service for professions operations.
-     */
-    private final SubjectService professionService;
-
     @Autowired
-    public InitializedData(ProfessorService characterService, UniversityService universityService, SubjectService professionService) {
+    public InitializedData(ProfessorService characterService, UniversityService universityService) {
         this.professorService = characterService;
         this.universityService = universityService;
-        this.professionService = professionService;
     }
 
     /**
@@ -69,23 +61,11 @@ public class InitializedData {
             universityService.create(UoM);
             universityService.create(UCLA);
 
-            Subject Physics = Subject.builder().name("Physics").build();
-            Subject Maths = Subject.builder().name("Maths").build();
-            Subject Chemistry = Subject.builder().name("Chemistry").build();
-            Subject Medicine = Subject.builder().name("Medicine").build();
-
-            professionService.create(Physics);
-            professionService.create(Maths);
-            professionService.create(Chemistry);
-            professionService.create(Medicine);
-
             Professor Kyle = Professor.builder()
                     .name("Kyle")
                     .age(54)
                     .education("PG")
                     .experience(1)
-                    .subject(Physics)
-                    .portrait(getResourceAsByteArray("avatar/calvian.png"))//package relative path
                     .university(NYU)
                     .build();
 
@@ -94,8 +74,6 @@ public class InitializedData {
                     .age(37)
                     .education("Havard")
                     .experience(16)
-                    .subject(Medicine)
-                    .portrait(getResourceAsByteArray("avatar/uhlbrecht.png"))//package relative path
                     .university(NYU)
                     .build();
 
@@ -104,8 +82,6 @@ public class InitializedData {
                     .age(33)
                     .education("NYU")
                     .experience(12)
-                    .subject(Chemistry)
-                    .portrait(getResourceAsByteArray("avatar/eloise.png"))//package relative path
                     .university(UCLA)
                     .build();
 
@@ -114,8 +90,6 @@ public class InitializedData {
                     .age(64)
                     .education("AGH")
                     .experience(2)
-                    .subject(Medicine)
-                    .portrait(getResourceAsByteArray("avatar/zereni.png"))//package relative path
                     .university(UoM)
                     .build();
 

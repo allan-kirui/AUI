@@ -10,17 +10,17 @@ GET http://localhost:8080/api/professors/3
 
 ###
 
-POST http://localhost:8080/api/professors
-Content-Type: application/json
-
-{
-  "name": "Linda",
-  "education": "PG",
-  "age": 39,
-  "experience": 11,
-  "university": "UCLA",
-  "subject": "Medicine"
-}
+#POST http://localhost:8080/api/professors
+#Content-Type: application/json
+#
+#{
+#  "name": "Linda",
+#  "education": "PG",
+#  "age": 39,
+#  "experience": 11,
+#  "university": "UCLA",
+#  "subject": "Medicine"
+#}
 
 
 ###
@@ -37,7 +37,6 @@ Content-Type: application/json
 ###
 
 //DELETE http://localhost:8080/api/professors/1
-
 
 ###
 

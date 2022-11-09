@@ -57,7 +57,11 @@ public class UniversityService {
         repository.save(university);
     }
 
+    @Transactional
     public void delete(String universityName) {
         repository.deleteById(universityName);
     }
+
+    @Transactional
+    public void update(University university){repository.save(university);}
 }

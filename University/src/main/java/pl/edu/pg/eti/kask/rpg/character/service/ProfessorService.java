@@ -8,8 +8,6 @@ import pl.edu.pg.eti.kask.rpg.character.repository.ProfessorRepository;
 import pl.edu.pg.eti.kask.rpg.university.entity.University;
 import pl.edu.pg.eti.kask.rpg.university.repository.UniversityRepository;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,11 +58,7 @@ public class ProfessorService {
         return professorRepository.findByIdAndUniversity(id, university);
     }
 
-    /**
-     * @param username user's login
-     * @param id       character's id
-     * @return selected character for user if present
-     */
+
     public Optional<Professor> find(String universityname, Long id) {
         Optional<University> university = universityRepository.findById(universityname);
         if (university.isPresent()) {
@@ -114,22 +108,7 @@ public class ProfessorService {
         professorRepository.deleteById((long) employeeID);
     }
 
-    /**
-     * Updates portrait of the employee.
-     *
-     * @param id professor's id
-     * @param is input stream containing new portrait
-     */
-    @Transactional
-    public void updatePortrait(Long id, InputStream is) {
-        professorRepository.findById(id).ifPresent(employee -> {
-            try {
-                employee.setPortrait(is.readAllBytes());
-                //professorRepository.update(employee);
-            } catch (IOException ex) {
-                throw new IllegalStateException(ex);
-            }
-        });
-    }
+
+
 
 }

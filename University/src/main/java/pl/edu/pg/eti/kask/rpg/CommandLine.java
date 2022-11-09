@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.edu.pg.eti.kask.rpg.character.entity.Professor;
-import pl.edu.pg.eti.kask.rpg.character.entity.Subject;
 import pl.edu.pg.eti.kask.rpg.character.service.ProfessorService;
-import pl.edu.pg.eti.kask.rpg.character.service.SubjectService;
 import pl.edu.pg.eti.kask.rpg.university.entity.University;
 import pl.edu.pg.eti.kask.rpg.university.service.UniversityService;
 
@@ -22,64 +20,43 @@ import java.util.Scanner;
 public class CommandLine implements CommandLineRunner {
 
     private ProfessorService professorService;
-    private SubjectService subjectService;
 
     private UniversityService universityService;
 
     @Autowired
-    public CommandLine(ProfessorService professorService, SubjectService subjectService,UniversityService universityService) {
+    public CommandLine(ProfessorService professorService, UniversityService universityService) {
         this.professorService = professorService;
-        this.subjectService = subjectService;
         this.universityService = universityService;
     }
 
-    public void test() {
-        System.out.println(subjectService.findAll());
-    }
 
     @Override
     public void run(String... args) throws Exception {
         professorService.findAll().forEach(System.out::println);
         int choice = 0;
-        while (choice != 8) {
-            System.out.println("Press 1 to Display all Subjects:");
-            System.out.println("Press 2 to Display all Professors:");
-            System.out.println("Press 3 to Display all Universities:");
-            System.out.println("Press 4 to Add professor to a Subject:");
-            System.out.println("Press 5 to Delete an Professor:");
-            System.out.println("Press 6 to Delete a Subject:");
-            System.out.println("Press 7 to Delete a University:");
-            System.out.println("Press 8 to Exit");
+        while (choice != 6) {
+            System.out.println("Press 1 to Display all Professors:");
+            System.out.println("Press 2 to Display all Universities:");
+            System.out.println("Press 3 to Add professor to a University:");
+            System.out.println("Press 4 to Delete an Professor:");
+            System.out.println("Press 5 to Delete a University:");
+            System.out.println("Press 6 to Exit");
 
             Scanner myObj = new Scanner(System.in);
             choice = myObj.nextInt();  // Read university input
 
-            // DISPLAY ALL SUBJECTS
-            if (choice == 1) {
-                System.out.println(subjectService.findAll());
-            }
             // DISPLAY ALL PROFESSORS
-            else if (choice == 2) {
+            if (choice == 1) {
                 professorService.findAll().forEach(System.out::println);
             }
             // DISPLAY ALL UNIVERSITIES
-            else if (choice == 3) {
+            else if (choice == 2) {
                 universityService.findAll().forEach(System.out::println);
             }
-            // ADD professor TO A subject
-            else if (choice == 4) {
-                List<Subject> allSubjects = subjectService.findAll();
+            // ADD professor TO A UNIVERSITY
+            else if (choice == 3) {
                 List<University> allUniversities = universityService.findAll();
                 int counter = 0;
-                for (Subject subject : allSubjects) {
-                    System.out.println(counter + " -- " + subject.getName());
-                    counter++;
-                }
-                System.out.println("Pick subject number: ");
-                int chosensubject = myObj.nextInt();
-                myObj.nextLine();
-
-                counter = 0;
                 for (University university : allUniversities) {
                     System.out.println(counter + " -- " + university.getName());
                     counter++;
@@ -104,13 +81,12 @@ public class CommandLine implements CommandLineRunner {
                         .age(professorAge)
                         .education(professorEducation)
                         .experience(professorExperience)
-                        .subject(allSubjects.get(chosensubject))
                         .university(allUniversities.get(professorWorkplace))
                         .build();
 
                 professorService.create(newProfessor);
             } // DELETING A SPECIFIC professor
-            else if (choice == 5) {
+            else if (choice == 4) {
                 List<Professor> allProfessors = professorService.findAll();
                 for (Professor professor : allProfessors) {
                     System.out.println(professor.getId() + " -- " + professor.getName());
@@ -118,26 +94,8 @@ public class CommandLine implements CommandLineRunner {
                 int chosenOne = myObj.nextInt();
                 professorService.delete(chosenOne);
 
-            } // DELETING A SPECIFIC SUBJECT
-            else if (choice == 6) {
-                List<Subject> allSubjects = subjectService.findAll();
-                int counter = 0;
-                for (Subject subject : allSubjects) {
-                    System.out.println(counter + " -- " + subject.getName());
-                    counter++;
-                }
-                System.out.println("Pick subject number to delete: ");
-                int chosenSubject = myObj.nextInt();
-                myObj.nextLine();
-                subjectService.delete(allSubjects.get(chosenSubject).getName());
-                List<Professor> allProfessors = professorService.findAll();
-                for (Professor professor : allProfessors) {
-                    if (Objects.equals(professor.getSubject().getName(), allSubjects.get(chosenSubject).getName())) {
-                        professorService.delete(Math.toIntExact(professor.getId()));
-                    }
-                }
-            }
-            else if (choice == 7) {
+            }// DELETE A SPECIFIC UNIVERSITY
+            else if (choice == 5) {
                 List<University> allUniversities = universityService.findAll();
                 int counter = 0;
                 for (University university : allUniversities) {

@@ -39,25 +39,13 @@ public class Professor extends Creature {
     @JoinColumn(name = "university")
     private University university;
 
-    /**
-     * Professor's profession (class).
-     */
-    @ManyToOne
-    @JoinColumn(name = "subject")
-    private Subject subject;
 
     /**
      * Professor's total experience.
      */
     private int experience;
 
-    /**
-     * Creature's portrait. Images in database are stored as blobs (binary large objects).
-     */
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private byte[] portrait;
+
 
 
 }
