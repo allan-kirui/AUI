@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Spring Rest.iml" filepath="$PROJECT_DIR$/.idea/Spring Rest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/University/simple-rpg.iml" filepath="$PROJECT_DIR$/University/simple-rpg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/professors/professors.iml" filepath="$PROJECT_DIR$/professors/professors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/universities/universities.iml" filepath="$PROJECT_DIR$/universities/universities.iml" />
     </modules>
   </component>
 </project>
