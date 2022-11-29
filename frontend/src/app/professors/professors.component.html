@@ -1,0 +1,12 @@
+
+<h2>My Professor</h2>
+<ul class="professors">
+    <li  *ngFor="let professor of professors">
+        <a routerLink="/professors/{{professor.id}}">
+            <span class="badge">{{professor.id}}</span>
+            <span class="name">{{professor.name}}</span>
+        </a>
+    </li>
+</ul>
+
+

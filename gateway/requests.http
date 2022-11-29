@@ -1,4 +1,5 @@
 GET http://localhost:8080/api/professors
+Accept: application/json
 
 ###
 
@@ -36,7 +37,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/api/professors/1
+# DELETE http://localhost:8080/api/professors/1
 
 ###
 
@@ -83,7 +84,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/api/universities/UoM/professors/2
+# DELETE http://localhost:8080/api/universities/UoM/professors/2
 
 ###
 
