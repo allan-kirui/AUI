@@ -1,0 +1,15 @@
+<h2>Random Professors</h2>
+<div class="professors-menu">
+  <a *ngFor="let professor of professors"
+    routerLink="/professors/{{professor.id}}">
+    {{professor.name}}
+  </a>
+</div>
+
+<!--<h2>Random Universities</h2>-->
+<!--<div class="universities-menu">-->
+<!--  <a *ngFor="let university of universities"-->
+<!--     routerLink="/universities/{{university.name}}">-->
+<!--    {{university.name}}-->
+<!--  </a>-->
+<!--</div>-->

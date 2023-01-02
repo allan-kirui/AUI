@@ -1,0 +1,21 @@
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-container *ngIf="professorDetailBs | async as professor; else loading">
+    <mat-card>
+        <mat-card-title>{{professor.name}}</mat-card-title>
+        <mat-card-content>
+            <p>Education: {{professor.education}}</p>
+            <p>Age: {{professor.age}}</p>
+            <p>University: {{professor.university}}</p>
+            <p>Experience: {{professor.experience}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="editProfessor(professor)">Edit</button>
+            <button mat-raised-button color="warn" (click)="deleteProfessor(professor)">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <button mat-raised-button type="button" (click)="goBack()">Go back</button>
+</ng-container>

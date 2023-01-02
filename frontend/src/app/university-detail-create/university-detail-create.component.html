@@ -1,0 +1,17 @@
+<h1 mat-dialog-title [textContent]="data?.isEdit ? 'Edit university' : 'Create University'"></h1>
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput required formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input matInput required formControlName="location">
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button cdkFocusInitial color="primary" type="submit" (click)="create()" [textContent]="data?.isEdit ? 'Update' : 'Create'"></button>
+    <button mat-raised-button color="warn" (click)="cancel()">cancel</button>
+</mat-dialog-actions>

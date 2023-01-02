@@ -1,0 +1,16 @@
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-container *ngIf="UniversityDetail | async as university; else loading">
+    <mat-card>
+        <mat-card-title>{{university.name}}</mat-card-title>
+        <mat-card-content>Location: {{university.location}}</mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="editUniversity(university)">Edit</button>
+            <button mat-raised-button color="warn" (click)="deleteUniversity(university)">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <button mat-raised-button type="button" (click)="goBack()">Go back</button>
+</ng-container>

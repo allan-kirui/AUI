@@ -1,0 +1,14 @@
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-container *ngIf="universityService.universitiesBS | async as universities; else loading">
+    <h2>Universities</h2>
+    <mat-list>
+        <div *ngFor="let university of universities" class="list-record">
+            <mat-list-item matRipple routerLink="/university" [queryParams]="{ name: university }">
+                {{university}}
+            </mat-list-item>
+        </div>
+    </mat-list>
+    <button mat-raised-button color="primary" (click)="createUniversity()">Create new university</button>
